@@ -2,27 +2,37 @@
   "name": "next-wp",
   "version": "0.0.1",
   "description": "Next.JS package for using headless WordPress as an API",
+  "author": "Michael Nelson",
+  "license": "ISC",
+  "contributors": [
+    {
+      "name": "Michael Nelson",
+      "email": "michael@nelson.tech",
+      "url": "https://github.com/nelson-tech"
+    }
+  ],
   "exports": {
     ".": {
-      "import": "./dist/main.es.js",
-      "require": "./dist/main.cjs.js"
+      "import": "./dist/main.mjs",
+      "require": "./dist/main.js"
     }
   },
-  "main": "./dist/main.cjs.js",
-  "module": "./dist/main.es.js",
+  "main": "./dist/main.js",
+  "module": "./dist/main.mjs",
   "typings": "./dist/main.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc && vite build",
-    "build:watch": "tsc && vite build --watch",
-    "dev": "vite",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nelson-tech/next-wp.git"
+    "docs": "npm typedoc",
+    "build": "tsc && vite build && typedoc",
+    "build:watch": "tsc && vite build --watch && typedoc",
+    "dev": "vite && typedoc",
+    "prepare": "npm run prettier && npm run build",
+    "prettier": "prettier --write .",
+    "preview": "vite preview",
+    "test": "vitest --coverage",
+    "test:run": "vitest run --coverage"
   },
   "keywords": [
     "npm",
@@ -34,19 +44,32 @@
     "api",
     "typescript"
   ],
-  "author": "Michael Nelson",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nelson-tech/next-wp/issues"
+  "dependencies": {
+    "luxon": "^3.3.0",
+    "picocolors": "^1.0.0"
   },
-  "homepage": "https://github.com/nelson-tech/next-wp#readme",
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.0",
+    "@types/luxon": "^3.3.0",
     "@types/node": "^20.1.2",
+    "@vitest/coverage-c8": "^0.31.0",
+    "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "rollup-plugin-typescript-paths": "^1.4.0",
+    "rollup-plugin-visualizer": "^5.9.0",
     "tslib": "^2.5.0",
+    "typedoc": "^0.24.7",
     "typescript": "^5.0.4",
-    "vite": "^4.3.5"
+    "vite": "^4.3.5",
+    "vite-plugin-progress": "^0.0.7",
+    "vitest": "^0.31.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nelson-tech/next-wp.git"
+  },
+  "homepage": "https://github.com/nelson-tech/next-wp#readme",
+  "bugs": {
+    "url": "https://github.com/nelson-tech/next-wp/issues"
   }
 }

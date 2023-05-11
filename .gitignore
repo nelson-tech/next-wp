@@ -90,6 +90,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+dist-ssr
 
 # Gatsby files
 .cache/
@@ -132,3 +133,10 @@ dist
 
 # package
 .vscode
+
+# Vitest
+coverage
+
+# Others
+_docs
+stats.html

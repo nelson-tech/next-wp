@@ -1,5 +1,3 @@
-const hello = (name: string) => {
-  return `Hello ${name}!`;
-};
-
-export default hello;
+export const hello = (name: string) => {
+  return `Hello, ${name}!`
+}
