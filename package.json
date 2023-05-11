@@ -2,8 +2,22 @@
   "name": "next-wp",
   "version": "0.0.1",
   "description": "Next.JS package for using headless WordPress as an API",
-  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/main.es.js",
+      "require": "./dist/main.cjs.js"
+    }
+  },
+  "main": "./dist/main.cjs.js",
+  "module": "./dist/main.es.js",
+  "typings": "./dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsc && vite build",
+    "build:watch": "tsc && vite build --watch",
+    "dev": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +39,14 @@
   "bugs": {
     "url": "https://github.com/nelson-tech/next-wp/issues"
   },
-  "homepage": "https://github.com/nelson-tech/next-wp#readme"
+  "homepage": "https://github.com/nelson-tech/next-wp#readme",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.0",
+    "@types/node": "^20.1.2",
+    "prettier": "^2.8.8",
+    "rollup-plugin-typescript-paths": "^1.4.0",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.5"
+  }
 }
