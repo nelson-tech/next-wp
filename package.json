@@ -1,0 +1,29 @@
+{
+  "name": "next-wp",
+  "version": "0.0.1",
+  "description": "Next.JS package for using headless WordPress as an API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nelson-tech/next-wp.git"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "next",
+    "next.js",
+    "wordpress",
+    "headless",
+    "api",
+    "typescript"
+  ],
+  "author": "Michael Nelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nelson-tech/next-wp/issues"
+  },
+  "homepage": "https://github.com/nelson-tech/next-wp#readme"
+}
