@@ -17,9 +17,10 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@rest/*": ["src/utils/rest/*"]
     }
   },
-  "include": ["./src"],
+  "include": ["./src", "./test"],
   "exclude": ["node_modules"]
 }
