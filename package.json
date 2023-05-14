@@ -11,18 +11,9 @@
       "url": "https://github.com/nelson-tech"
     }
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/main.mjs",
-      "require": "./dist/main.js"
-    }
-  },
-  "main": "./dist/main.js",
-  "module": "./dist/main.mjs",
-  "typings": "./dist/main.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "docs": "npm typedoc",
     "build": "tsc && vite build && typedoc",
@@ -64,6 +55,7 @@
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
     "vite-plugin-progress": "^0.0.7",
+    "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.31.0"
   },
   "repository": {

@@ -1,65 +1,46 @@
-import typescript from "@rollup/plugin-typescript"
+import { defineConfig } from "vite"
 import path from "path"
-import { typescriptPaths } from "rollup-plugin-typescript-paths"
+import typescript from "@rollup/plugin-typescript"
+import tsconfigPaths from "vite-tsconfig-paths"
 import { visualizer } from "rollup-plugin-visualizer"
 import progress from "vite-plugin-progress"
 import colors from "picocolors"
 
-import { defineConfig } from "vite"
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tsconfigPaths(),
+    typescript({
+      declaration: true,
+      // exclude: ["test"],
+      outDir: "dist",
+      // sourceMap: false,
+      rootDir: "src",
+    }),
+    visualizer({
+      title: "visualizer - next-wp",
+      template: "network",
+    }),
     // https://github.com/jeddygong/vite-plugin-progress
     progress({
       format: `Building ${colors.green("[:bar]")} :percent :eta`,
       total: 100,
       width: 60,
-      // complete: "=",
-      // incomplete: "",
     }),
   ],
-  resolve: {
-    alias: [
-      {
-        find: "~",
-        replacement: path.resolve(__dirname, "./src"),
-      },
-    ],
-  },
   server: {
     port: 3123,
   },
-  // preview: {
-  //   port: 3124,
-  // },
-  // https://vitejs.dev/guide/build.html#library-mode
   build: {
     manifest: true,
     minify: true,
     reportCompressedSize: true,
     lib: {
-      entry: path.resolve(__dirname, "src/main.ts"),
-      fileName: "main",
+      entry: {
+        index: path.resolve(__dirname, "src/index.ts"),
+      },
+      name: "next-wp",
       formats: ["es", "cjs"],
-    },
-    rollupOptions: {
-      external: [],
-      plugins: [
-        typescriptPaths({
-          preserveExtensions: true,
-        }),
-        typescript({
-          sourceMap: false,
-          declaration: true,
-          outDir: "dist",
-          exclude: ["**/__tests__"],
-        }),
-        visualizer({
-          title: "visualizer - vite-vanilla-ts-module",
-          template: "network",
-        }),
-      ],
     },
   },
 })

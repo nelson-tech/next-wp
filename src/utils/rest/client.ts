@@ -6,10 +6,13 @@ Requires NEXT_PUBLIC_API_HOST to be set in .env
 
 */
 
-import type { REST_WC_Client_Input } from "~/types/rest/client"
-import { REST_WC_URL } from "../constants/rest"
+import type {
+  REST_WC_Client_Input,
+  REST_Client_Response,
+} from "src/types/rest/client"
+import { REST_WC_URL } from "src/utils/constants/rest"
 
-const getRestClient = () => {
+export const getRestClient = () => {
   const apiHost = process.env.NEXT_PUBLIC_API_HOST
 
   if (!apiHost) {
@@ -33,10 +36,15 @@ const getRestClient = () => {
     method = "GET",
     body,
     searchParams,
-  }: REST_WC_Client_Input) => {
+  }: REST_WC_Client_Input): Promise<REST_Client_Response> => {
     let url = `${REST_WC_URL}${path}`
 
-    searchParams && (url += `?${new URLSearchParams(searchParams)}`)
+    searchParams &&
+      (url += `?${new URLSearchParams(
+        Object.entries(searchParams)
+          .map(([key, value]) => `${key}=${value}`)
+          .join("&")
+      )}`)
 
     const fetchOptions: RequestInit = {
       method,
@@ -54,7 +62,7 @@ const getRestClient = () => {
       return { data: json, headers, status: response.status }
     }
 
-    return null
+    return { data: null, headers: null, status: null }
   }
 
   return {
@@ -62,5 +70,3 @@ const getRestClient = () => {
     wcFetch,
   }
 }
-
-export default getRestClient

@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest"
-import getClient from "@rest/client"
+import { getRestClient } from "src"
+import { REST_WC_PRODUCTS_URL } from "src/utils/constants/rest"
 import { startServer } from "test/mocks/server"
-import { REST_WC_PRODUCTS_URL } from "~/utils/constants/rest"
 import { products } from "test/mocks/data/products"
+import {
+  expectRestReturn,
+  expectRestReturnNull,
+} from "test/lib/expectRestReturn"
 
 describe("REST Client", () => {
   it("Should throw an error if NEXT_PUBLIC_API_HOST is not set as env variable", () => {
@@ -10,21 +14,21 @@ describe("REST Client", () => {
 
     process.env = {}
 
-    expect(() => getClient()).toThrow("NEXT_PUBLIC_API_HOST is not set")
+    expect(() => getRestClient()).toThrow("NEXT_PUBLIC_API_HOST is not set")
 
     process.env = env
   })
 
   describe("fetch", () => {
     it("Should return fetch", () => {
-      const restClient = getClient()
+      const restClient = getRestClient()
 
       expect(restClient).toHaveProperty("fetch")
     })
 
     describe("fetch - Unreachable address", () => {
       it("Should return undefined", async () => {
-        const restClient = getClient()
+        const restClient = getRestClient()
 
         const response = await restClient.fetch(REST_WC_PRODUCTS_URL)
 
@@ -34,7 +38,7 @@ describe("REST Client", () => {
   })
 
   describe("wcFetch", () => {
-    const restClient = getClient()
+    const restClient = getRestClient()
 
     it("Should return wcFetch", () => {
       expect(restClient).toHaveProperty("wcFetch")
@@ -51,18 +55,16 @@ describe("REST Client", () => {
       it("Should fetch data from API", async () => {
         const response = await restClient.wcFetch({ path: "/products" })
 
-        expect(response).toHaveProperty("data")
-        expect(response).toHaveProperty("headers")
+        expectRestReturn(response)
       })
 
       it("Should fetch data from API with search params", async () => {
         const response = await restClient.wcFetch({
           path: "/products",
-          searchParams: { slug: "test" },
+          searchParams: { slug: "simple-product" },
         })
 
-        expect(response).toHaveProperty("data")
-        expect(response).toHaveProperty("headers")
+        expectRestReturn(response)
       })
     })
 
@@ -82,18 +84,17 @@ describe("REST Client", () => {
           body: "test",
         })
 
-        expect(response).toHaveProperty("data")
-        expect(response).toHaveProperty("headers")
+        expectRestReturn(response)
       })
     })
 
     describe("wcFetch - Unreachable address", async () => {
       it("Should return null", async () => {
-        const restClient = getClient()
+        const restClient = getRestClient()
 
         const response = await restClient.wcFetch({ path: "/products" })
 
-        expect(response).toBeNull()
+        expectRestReturnNull(response)
       })
     })
   })

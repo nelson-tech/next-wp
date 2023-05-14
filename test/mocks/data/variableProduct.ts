@@ -1,4 +1,4 @@
-import { WC_Product } from "~/types/rest/wc/products"
+import { WC_Product } from "src/types/rest/wc/products"
 
 export const variableProduct: WC_Product = {
   id: 1,
