@@ -1,0 +1,16 @@
+import { WC_Product } from "src/types"
+import { getRestClient } from "../client"
+
+export const getProductBySlug = async (slug: string) => {
+  const { wcFetch } = getRestClient()
+
+  const response = await wcFetch({
+    path: `/products/${slug}`,
+  })
+
+  return response as {
+    data: WC_Product | null
+    headers: Headers
+    status: number
+  }
+}

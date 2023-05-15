@@ -9,7 +9,7 @@ describe("getProducts", () => {
   startServer({
     restOptions: {
       path: REST_WC_PRODUCTS_URL,
-      mockData: { products: productsData },
+      mockData: productsData,
     },
   })
 
@@ -17,5 +17,8 @@ describe("getProducts", () => {
     const response = await getProducts()
 
     expectRestReturn(response)
+    expect(response.data?.length).toBeGreaterThan(0)
+    expect(response.data?.[0]?.slug).toBe("simple-product")
+    expect(response.data?.[1]?.slug).toBe("variable-product")
   })
 })
