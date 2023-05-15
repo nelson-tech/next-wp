@@ -1,14 +1,6 @@
-export type WC_ProductImage = {
-  id: number | null
-  src: string | null
-  thumbnail: string | null
-  srcset: string | null
-  sizes: string | null
-  name: string | null
-  alt: string | null
-}
+import { REST_WC_Image } from "."
 
-export type WC_ProductAttribute = {
+export type REST_WC_ProductAttribute = {
   id: number | null
   name: string | null
   taxonomy: string | null
@@ -20,17 +12,17 @@ export type WC_ProductAttribute = {
   }[]
 }
 
-export type WC_ProductVariationAttribute = {
+export type REST_WC_ProductVariationAttribute = {
   name: string | null
   value: string | null
 }
 
-export type WC_ProductVariation = {
+export type REST_WC_ProductVariation = {
   id: number | null
-  attributes: WC_ProductVariationAttribute[]
+  attributes: REST_WC_ProductVariationAttribute[]
 }
 
-export type WC_Product = {
+export type REST_WC_Product = {
   id: number | null
   name: string | null
   slug: string | null
@@ -68,9 +60,9 @@ export type WC_Product = {
     | null
   average_rating: string | null
   review_count: number | null
-  images: WC_ProductImage[] | null
-  attributes: WC_ProductAttribute[] | null
-  variations: WC_ProductVariation[] | null
+  images: REST_WC_Image[] | null
+  attributes: REST_WC_ProductAttribute[] | null
+  variations: REST_WC_ProductVariation[] | null
   has_options: boolean | null
   is_purchasable: boolean | null
   is_on_backorder: boolean | null
@@ -88,7 +80,7 @@ export type WC_Product = {
   extensions: {} | null
 } | null
 
-export type WC_SortOptions = {
+export type REST_WC_SortOptions = {
   field:
     | "date"
     | "modified"
@@ -104,7 +96,7 @@ export type WC_SortOptions = {
   order: "asc" | "desc"
 }
 
-export type WC_StoreSortOption = {
+export type REST_WC_StoreSortOption = {
   name: string
-  id: WC_SortOptions
+  id: REST_WC_SortOptions
 }

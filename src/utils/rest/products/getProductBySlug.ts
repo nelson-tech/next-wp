@@ -1,4 +1,4 @@
-import { WC_Product } from "src/types"
+import { REST_WC_Product } from "src/types"
 import { getRestClient } from "../client"
 
 export const getProductBySlug = async (slug: string) => {
@@ -9,7 +9,7 @@ export const getProductBySlug = async (slug: string) => {
   })
 
   return response as {
-    data: WC_Product | null
+    data: REST_WC_Product | null
     headers: Headers
     status: number
   }

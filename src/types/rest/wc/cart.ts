@@ -1,4 +1,4 @@
-export type WC_Cart_Coupon = {
+export type REST_WC_Cart_Coupon = {
   code: string | null
   totals: {
     currency_code: string | null
@@ -13,8 +13,8 @@ export type WC_Cart_Coupon = {
   }
 }
 
-export type WC_Cart = {
-  coupons: WC_Cart_Coupon[]
+export type REST_WC_Cart = {
+  coupons: REST_WC_Cart_Coupon[]
   shipping_rates: [
     {
       package_id: number | null
@@ -174,7 +174,7 @@ export type WC_Cart = {
   extensions: {}
 }
 
-export type WC_Cart_AddInput = {
+export type REST_WC_Cart_AddInput = {
   id: number
   quantity: number
   variation?: { attribute: string; value: string }[]

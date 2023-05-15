@@ -1,7 +1,7 @@
-import { WC_Product } from "src/types/rest/wc/products"
+import { REST_WC_Product } from "src/types/rest/wc/products"
 
-export const variableProduct: WC_Product = {
-  id: 1,
+export const variableProduct: REST_WC_Product = {
+  id: 2,
   name: "Variable Product",
   slug: "variable-product",
   parent: 0,
@@ -44,7 +44,7 @@ export const variableProduct: WC_Product = {
   ],
   categories: [
     {
-      id: 2,
+      id: 102,
       name: "Child Category",
       slug: "child-category",
       link: "https://api.example.com/product-category/parent-category/child-category/",

@@ -1,4 +1,7 @@
-import { REST_WC_Client_SearchParams_Products, WC_Product } from "src/types"
+import {
+  REST_WC_Client_SearchParams_Products,
+  REST_WC_Product,
+} from "src/types"
 import { getRestClient } from "../client"
 
 export const getProducts = async (
@@ -12,7 +15,7 @@ export const getProducts = async (
   })
 
   return response as {
-    data: WC_Product[] | null
+    data: REST_WC_Product[] | null
     headers: Headers
     status: number
   }
