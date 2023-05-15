@@ -9,10 +9,16 @@ describe("getCategoryBySlug", () => {
     restOptions: { path: REST_WC_CATEGORIES_URL, mockData: categories },
   })
 
-  it("Should return category by slug", async () => {
-    const response = await getCategoryBySlug("parent-category")
+  it("Should return parent category by slug", async () => {
+    const parentCategory = await getCategoryBySlug("parent-category")
 
-    expect(response?.id).toBe(101)
+    expect(parentCategory?.id).toBe(101)
+  })
+
+  it("Should return child category by slug", async () => {
+    const childCategory = await getCategoryBySlug("child-category")
+
+    expect(childCategory?.id).toBe(102)
   })
 
   it("Should return null if category not found", async () => {
