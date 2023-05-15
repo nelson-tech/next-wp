@@ -2,7 +2,7 @@ import { categories } from "test/mocks/data/categories"
 import { describe, expect, it } from "vitest"
 import { REST_WC_CATEGORIES_URL } from "src/utils/constants/rest"
 import { startServer } from "test/mocks/server"
-import { getCategories } from "src/utils/rest/categories"
+import { getCategories } from "src"
 
 describe("getCategories", () => {
   startServer({
