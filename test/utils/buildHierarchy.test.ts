@@ -18,4 +18,10 @@ describe("buildHierarchy", () => {
     expect(hierarchy[0].children[0].ancestor?.id).toEqual(hierarchy[0].id)
     expect(hierarchy[0].children[0].ancestor?.name).toEqual("Parent Category")
   })
+
+  it("should return null if no categories are passed", () => {
+    const hierarchy = buildHierarchy(null)
+
+    expect(hierarchy).toBeNull()
+  })
 })

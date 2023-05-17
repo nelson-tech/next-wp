@@ -4,9 +4,11 @@ type HierarchyElement = {
   parent: number | null
 }
 
-export const buildHierarchy = (arr: HierarchyElement[]) => {
-  let parents: HierarchyElement[] = arr.filter((item) => item.parent === 0)
-  let children: {
+export const buildHierarchy = (arr: HierarchyElement[] | null) => {
+  if (!arr) return null
+
+  const parents: HierarchyElement[] = arr.filter((item) => item.parent === 0)
+  const children: {
     [key: number]: (HierarchyElement & {
       ancestor: HierarchyElement | undefined
     })[]
@@ -15,20 +17,22 @@ export const buildHierarchy = (arr: HierarchyElement[]) => {
   // Hash the children based on parent
   arr.forEach((item, i) => {
     if (!item.parent || item.parent === 0) return
+
+    // Get parent from original array (without appended children) - avoids circular reference
+    let parent = arr.find((i) => i.id === item.parent)
+
     if (!children[item.parent]) {
-      children[item.parent] = [
-        { ...item, ancestor: arr.find((i) => i.id === item.parent) },
-      ]
+      children[item.parent] = [{ ...item, ancestor: parent }]
     } else {
       children[item.parent].push({
         ...item,
-        ancestor: arr.find((i) => i.id === item.parent),
+        ancestor: parent,
       })
     }
   })
 
-  // function to recursively build the tree
-  var findChildren = function (parent: HierarchyElement) {
+  // Recursively build the tree
+  const findChildren = (parent: HierarchyElement) => {
     if (parent.id && children[parent.id]) {
       parent.children = children[parent.id]
       if (parent.children.length > 0) {
