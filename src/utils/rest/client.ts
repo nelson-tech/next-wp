@@ -6,11 +6,8 @@ Requires NEXT_PUBLIC_API_HOST to be set in .env
 
 */
 
-import type {
-  REST_WC_Client_Input,
-  REST_Client_Response,
-} from "src/types/rest/client"
-import { REST_WC_URL } from "src/utils/constants/rest"
+import type { REST_WC_Client_Input, REST_Client_Response } from "./../../types"
+import { REST_WC_URL } from "../../utils/constants/rest"
 
 export const getRestClient = () => {
   const apiHost = process.env.NEXT_PUBLIC_API_HOST

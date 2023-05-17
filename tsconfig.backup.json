@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["node"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "~src/": ["src/"],
+      "~src/*": ["src/*"],
+      "@rest/*": ["src/utils/rest/*"],
+      "@test/*": ["test/*"]
+    }
+  },
+  "include": ["./src/**/*", "./test/**/*"],
+  "exclude": ["node_modules"],
+  "trc-alias": {
+    "verbose": true
+  }
+}

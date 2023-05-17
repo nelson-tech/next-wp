@@ -1,8 +1,8 @@
-import { setupServer } from "msw/node"
+import { SetupServer, setupServer } from "msw/node"
 import { getHandlers, GetHandlersInput } from "./handlers"
 import { afterAll, afterEach, beforeAll } from "vitest"
 
-export const startServer = (handlersInput: GetHandlersInput) => {
+export const startServer = (handlersInput: GetHandlersInput): SetupServer => {
   const restHandlers = getHandlers(handlersInput)
 
   const server = setupServer(...restHandlers)

@@ -7,6 +7,11 @@ export type REST_WC_Client_Input = {
 
 export type REST_WC_Client_SearchParams = REST_WC_Client_SearchParams_Products
 
+export type REST_WC_Pagination = {
+  page?: number
+  per_page?: number
+}
+
 export type REST_WC_Client_SearchParams_Products = {
   search?: number
   slug?: string
@@ -49,7 +54,7 @@ export type REST_WC_Client_SearchParams_Products = {
   attribute_relation?: "or" | "and"
   catalog_visibility?: "any" | "visible" | "catalog" | "search" | "hidden"
   rating?: boolean
-}
+} & REST_WC_Pagination
 
 export type REST_Response_Error = {
   code: string

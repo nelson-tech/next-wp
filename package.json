@@ -16,13 +16,13 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "docs": "npm typedoc",
-    "build": "tsc && vite build && typedoc",
+    "build": "npm run test:run && tsc && vite build && typedoc",
     "build:watch": "tsc && vite build --watch && typedoc",
     "dev": "vite && typedoc",
     "prepare": "npm run prettier && npm run build",
     "prettier": "prettier --write .",
     "preview": "vite preview",
-    "test": "vitest --coverage",
+    "test": "vitest",
     "test:run": "vitest run --coverage"
   },
   "keywords": [

@@ -1,4 +1,4 @@
-import { REST_WC_Product } from "src/types"
+import { REST_WC_Product } from "../../../types"
 import { getRestClient } from "../client"
 
 export const getProductBySlug = async (slug: string) => {

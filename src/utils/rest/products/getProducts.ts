@@ -1,7 +1,7 @@
 import {
   REST_WC_Client_SearchParams_Products,
   REST_WC_Product,
-} from "src/types"
+} from "../../../types"
 import { getRestClient } from "../client"
 
 export const getProducts = async (

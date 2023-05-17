@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { getRestClient } from "src"
-import { REST_WC_PRODUCTS_URL } from "src/utils/constants/rest"
+import { getRestClient, REST_WC_PRODUCTS_URL } from "src"
 import { startServer } from "test/mocks/server"
 import { products } from "test/mocks/data/products"
 import {

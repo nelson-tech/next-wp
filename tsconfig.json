@@ -2,27 +2,31 @@
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["node"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "nodenext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    // "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["src/*"],
-      "~types/*": ["src/types/*"],
-      "@rest/*": ["src/utils/rest/*"],
-      "@test/*": ["test/*"]
-    }
+    "jsx": "react-jsx",
+    "declaration": true,
+    // exclude: ["test"],
+    "outDir": "dist",
+    // sourceMap: false,
+    "rootDir": ".",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "types": ["node"],
+
+    /* Aliases with default import */
+    "baseUrl": "./"
   },
-  "include": ["./src", "./test", "src/index.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts", "test/**/*"]
 }
