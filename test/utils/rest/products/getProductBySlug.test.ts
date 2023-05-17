@@ -16,8 +16,6 @@ describe("getProductBySlug", () => {
   it("Should return products", async () => {
     const response = await getProductBySlug("simple-product")
 
-    console.log("DATA", response.data)
-
     expectRestReturn(response)
     expect(response.data?.slug).toBe("simple-product")
   })
