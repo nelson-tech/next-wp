@@ -17,7 +17,7 @@ describe("getCategoriesByParentSlug", () => {
         "parent-category"
       )
 
-      expect(categoriesByParentSlug?.length).toEqual(1)
+      expect(categoriesByParentSlug?.length).toEqual(2)
       expect(categoriesByParentSlug?.[0].id).toEqual(102)
     })
   })

@@ -13,7 +13,7 @@ describe("getCategoriesByParentID", () => {
     it("should return categories by parent ID", async () => {
       const categoriesByParentID = await getCategoriesByParentID(101)
 
-      expect(categoriesByParentID?.length).toEqual(1)
+      expect(categoriesByParentID?.length).toEqual(2)
       expect(categoriesByParentID?.[0].id).toEqual(102)
     })
 
