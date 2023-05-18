@@ -1,5 +1,5 @@
-import { REST_WC_Category } from "../../../types"
-import { getRestClient } from ".."
+import { REST_WC_Category } from "../../types"
+import { getRestClient } from "../client"
 
 export const getCategories = async () => {
   const client = getRestClient()

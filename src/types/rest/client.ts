@@ -13,7 +13,7 @@ export type REST_WC_Pagination = {
 }
 
 export type REST_WC_Client_SearchParams_Products = {
-  search?: number
+  search?: string
   slug?: string
   after?: string
   before?: string
@@ -22,7 +22,7 @@ export type REST_WC_Client_SearchParams_Products = {
   include?: string[]
   offset?: number
   order?: "asc" | "desc"
-  orderBy?:
+  orderby?:
     | "date"
     | "modified"
     | "id"

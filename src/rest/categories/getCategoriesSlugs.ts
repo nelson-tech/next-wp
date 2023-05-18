@@ -1,4 +1,4 @@
-import { getCategories } from "."
+import { getCategories } from "./getCategories"
 
 export const getCategoriesSlugs = async () => {
   const response = await getCategories()

@@ -1,4 +1,3 @@
-import { R } from "vitest/dist/types-b7007192.js"
 import { REST_WC_Image } from "."
 
 export type REST_WC_Category = {
@@ -13,11 +12,11 @@ export type REST_WC_Category = {
   permalink: string | null
 }
 
-export type REST_WC_Category_Child = REST_WC_Category & {
-  ancestor: REST_WC_Category | null | undefined
+export type REST_WC_Category_Parent = REST_WC_Category & {
   children?: REST_WC_Category_Child[]
 }
 
-export type REST_WC_Category_Tree = REST_WC_Category & {
-  children: REST_WC_Category_Child[]
+export type REST_WC_Category_Child = REST_WC_Category & {
+  children?: REST_WC_Category_Child[]
+  ancestor?: REST_WC_Category | null | undefined
 }

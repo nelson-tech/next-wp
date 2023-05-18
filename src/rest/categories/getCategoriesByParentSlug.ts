@@ -1,4 +1,4 @@
-import { getCategoriesByParentID } from "."
+import { getCategoriesByParentID } from "./getCategoriesByParentID"
 import { getCategoryBySlug } from "./getCategoryBySlug"
 
 export const getCategoriesByParentSlug = async (parentSlug: string) => {

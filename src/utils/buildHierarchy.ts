@@ -18,8 +18,13 @@ export const buildHierarchy = (arr: HierarchyElement[] | null) => {
   arr.forEach((item, i) => {
     if (!item.parent || item.parent === 0) return
 
-    // Get parent from original array (without appended children) - avoids circular reference
-    let parent = arr.find((i) => i.id === item.parent)
+    // Get parent without appended children - avoids circular reference
+    let parent = arr
+      .map((p: HierarchyElement) => {
+        const { children, ...ancestor } = p
+        return ancestor
+      })
+      .find((i) => i.id === item.parent)
 
     if (!children[item.parent]) {
       children[item.parent] = [{ ...item, ancestor: parent }]

@@ -1,4 +1,3 @@
-import exp from "constants"
 import { REST_WC_CATEGORIES_URL, getFilteredCategories } from "src"
 import { categories } from "test/mocks/data/categories"
 import { startServer } from "test/mocks/server"
@@ -12,10 +11,12 @@ describe("getFilteredCategories", () => {
     it("should return a filtered categories", async () => {
       const filteredCategories = await getFilteredCategories()
 
+      console.log(filteredCategories && filteredCategories[0].children?.[0])
+
       expect(filteredCategories).to.be.an("array")
       expect(filteredCategories?.[0]?.slug).toBe("parent-category")
       expect(filteredCategories?.[0]?.children).to.be.an("array")
-      expect(filteredCategories?.[0]?.children.length).toBe(2)
+      expect(filteredCategories?.[0]?.children?.length).toBe(2)
       expect(filteredCategories?.[0]?.children?.[0]?.slug).toBe(
         "child-category"
       )
